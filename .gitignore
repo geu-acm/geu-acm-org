@@ -11,6 +11,9 @@
 # production
 /build
 
+# surge
+/surge
+
 # misc
 .DS_Store
 .env.local
