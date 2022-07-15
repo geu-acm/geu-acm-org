@@ -9,8 +9,8 @@ export default function Navtabs() {
       <StyledTabs grow position='center'>
         <Tabs.Tab label="Home" />
         <Tabs.Tab label="About" />
-        <Tabs.Tab label="Team" />
         <Tabs.Tab label="Events" />
+        <Tabs.Tab label="Team" />
         <Tabs.Tab label="Join" />
         <Tabs.Tab label="Contact" />
       </StyledTabs>

@@ -9,12 +9,14 @@ import {
   MediaQuery,
   Burger,
   useMantineTheme,
+  Tabs,
 } from '@mantine/core';
 import Navtabs from './components/Navtabs';
 import Jumbotron from './components/Jumbotron';
 import './App.css'
 import About from './sections/About';
 import Team from './sections/Team';
+import StyledTabs from './components/Styledbutton';
 
 export default function App() {
   const theme = useMantineTheme();
@@ -32,7 +34,14 @@ export default function App() {
       navbar={
         <MediaQuery largerThan="md" styles={{ display: 'none' }} >
           <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }}>
-            <Text>Application navbar</Text>
+            <StyledTabs position='center'>
+              <Tabs.Tab label="Home" />
+              <Tabs.Tab label="About" />
+              <Tabs.Tab label="Team" />
+              <Tabs.Tab label="Events" />
+              <Tabs.Tab label="Join" />
+              <Tabs.Tab label="Contact" />
+            </StyledTabs>
           </Navbar>
         </MediaQuery>
       }

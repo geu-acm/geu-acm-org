@@ -1,6 +1,6 @@
 import { Card, Center, Image, Text, Badge, Button, Group, useMantineTheme, Avatar } from '@mantine/core';
 
-export default function Profilecard() {
+export default function Profilecard(props) {
   const theme = useMantineTheme();
 
   const secondaryColor = theme.colorScheme === 'dark'
@@ -8,25 +8,32 @@ export default function Profilecard() {
     : theme.colors.gray[7];
 
   return (
-    <div style={{ width: 200, margin: 'auto' }}>
-      <Card shadow="sm" p="lg">
+    <div style={{ width: 200, margin: 'auto' }} className="pcard">
+      <Card shadow="xl" p="xl" style={{ minWidth: "184px", minHeight: "303px" }}>
         <Center>
-        <Card.Section>
-          <Avatar radius={80} size={180} src="https://geu.acm.org/core/Diksha.jpg" />
-        </Card.Section>
+          <Card.Section>
+            <Avatar radius={80} size={120} src={props.pic} />
+          </Card.Section>
         </Center>
-        
 
-        <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>
-          <Text align='center' weight={500}>Disksha Bisht</Text>
+        <Group position="center" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>
+          <Text align='center' weight={500}>{props.name}</Text>
+          {/* <br /> */}
           <Badge color="pink" variant="light">
-            Chair
+            {props.pos}
           </Badge>
         </Group>
 
-        <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }}>
-          Contact
-        </Button>
+        {
+          !props.in ?
+            <>
+              <icon class="fa-brands fa-instagram"></icon>
+              <icon class="fa-brands fa-linkedin"></icon>
+              <icon class="fa-brands fa-github"></icon>
+            </>
+            : <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }}>Contact</Button>
+        }
+
       </Card>
     </div>
   );
