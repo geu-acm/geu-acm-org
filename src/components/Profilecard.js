@@ -9,7 +9,7 @@ export default function Profilecard(props) {
 
   return (
     <div style={{ width: 200, margin: 'auto' }} className="pcard">
-      <Card shadow="xl" p="xl" style={{ minWidth: "184px", minHeight: "303px" }}>
+      <Card shadow="xl" p="xl" style={{ width: "175px", minHeight: "303px" }}>
         <Center>
           <Card.Section>
             <Avatar radius={80} size={120} src={props.pic} />

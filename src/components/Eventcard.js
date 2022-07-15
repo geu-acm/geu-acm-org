@@ -6,11 +6,11 @@ export default function Eventcard(props) {
       shadow="sm"
       p="xl"
       component="a"
-      href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      // href=""
       target="_blank"
     >
       <Card.Section>
-        <Image src={props.link} height={160} alt="No way!" />
+        <Image src={props.img} alt="No way!" />
       </Card.Section>
 
       <Text weight={500} size="lg">
