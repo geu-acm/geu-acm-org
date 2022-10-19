@@ -3,7 +3,7 @@ import Profilecard from "../components/Profilecard";
 
 export default function Team() {
     return (
-        <Center className="team">
+        <Center className="team" id="team">
             <Center>
                 <h1> Our Team </h1>
             </Center>

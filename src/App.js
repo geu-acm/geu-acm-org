@@ -28,6 +28,7 @@ export default function App() {
       styles={{
         main: {
           background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+          
         },
       }}
       navbarOffsetBreakpoint="sm"
@@ -36,13 +37,13 @@ export default function App() {
       navbar={
         <MediaQuery largerThan="md" styles={{ display: 'none' }} >
           <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }}>
-            <StyledTabs position='center'>
-              <Tabs.Tab label="Home" />
-              <Tabs.Tab label="About" />
-              <Tabs.Tab label="Team" />
-              <Tabs.Tab label="Events" />
-              <Tabs.Tab label="Join" />
-              <Tabs.Tab label="Contact" />
+            <StyledTabs position='right'>
+              <Tabs.Tab label="Home" style={{minWidth: '100px'}} />
+              <Tabs.Tab label="About" style={{minWidth: '100px'}} />
+              <Tabs.Tab label="Events" style={{minWidth: '100px'}} />
+              <Tabs.Tab label="Team" style={{minWidth: '100px'}} />
+              <Tabs.Tab label="Join" style={{minWidth: '100px'}} />
+              <Tabs.Tab label="Contact" style={{minWidth: '100px'}} />
             </StyledTabs>
           </Navbar>
         </MediaQuery>
@@ -64,11 +65,14 @@ export default function App() {
             <div style={{ width: '2vw' }}></div>
 
             {/* <Text>GEU ACM</Text> */}
-            <img src="https://geu.acm.org/images/ACM%20GEU%20logo%20gas.png" width="100px"></img>
+            <a href='/'>
+              <img src="https://geu.acm.org/images/ACM%20GEU%20logo%20gas.png" width="100px" />
+            </a>
 
             <div style={{ width: '50vw' }}></div>
 
             <Navtabs />
+            {/* <button>Hello</button> */}
           </div>
         </Header>
       }

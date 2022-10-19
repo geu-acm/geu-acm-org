@@ -3,7 +3,7 @@ import { Center, Text, Container } from "@mantine/core";
 export default function About() {
     return (
         <Center>
-            <div class="about">
+            <div class="about" id="about">
                 <br /><br />
                 <Center>
                     <h1> About Us </h1>
