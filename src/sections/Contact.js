@@ -3,7 +3,7 @@ import Eventcard from "../components/Eventcard";
 
 export default function Contact() {
     return (
-        <div class="events">
+        <div class="events" id="contact">
             <Center>
                 <h1>
                     Contact Us

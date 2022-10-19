@@ -5,7 +5,7 @@ import Eventcard from "../components/Eventcard";
 
 export default function Events() {
     return (
-        <div class="events">
+        <div class="events" id="events">
             <Center>
                 <h1>
                     Recent Events
