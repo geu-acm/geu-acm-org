@@ -107,7 +107,7 @@ Tabs{
   font-family: 'Changa', sans-serif;
   background: #e9edee;
   width: 100%;
-  height: 300vh;
+  height: 425vh;
   font-size: 22px;
   padding-top: 60px;
   display: block;
@@ -115,7 +115,7 @@ Tabs{
 
 @media screen and (max-width: 525px) {
   .team{
-    height: 375vh;
+    height: 425vh;
   }
 }
 
@@ -159,7 +159,7 @@ Tabs{
 
 #contact{
   min-height: 90vh;
-  padding-top: 10vh;
+  padding-top: 8vh;
 }
 
 .contact__connect--head{
@@ -186,9 +186,9 @@ Tabs{
   top: 10px;
 }
 
-@media screen and (max-width: 1000px) {
-  .contact {
-    /* display: block; */
+@media screen and (max-width: 1200px) {
+  #contact .brspace{
+    min-height: 30px;
   }
 }
 @media screen and (min-width: 1200px) {

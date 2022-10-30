@@ -1,4 +1,4 @@
-import { Center, Text } from "@mantine/core";
+import { Center, MediaQuery, Text } from "@mantine/core";
 import Eventcard from "../components/Eventcard";
 
 export default function Contact() {
@@ -15,7 +15,7 @@ export default function Contact() {
             </Center>
             <Center className="contact__connect--body">
                 <sub style={{ color: "#0096FF" }}>ACM</sub> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {/* ik its unethical. But Dont touch it coz it works */}
+                {/* ik its unethical */}
                 <span>
                     <a href="https://www.instagram.com/geuacm/"><icon class="fa-brands fa-instagram" /></a>
                     <a href="https://www.linkedin.com/company/geu-acm"><icon class="fa-brands fa-linkedin" /></a>
@@ -29,7 +29,8 @@ export default function Contact() {
                 </span>
             </Center>
 
-            <br /><br />
+            <div class="brspace"></div>
+
             <Center>
                 <div>
                     <Text align="left" color="blue">Location: </Text>Clement Town, Dehradun, UK, India.
