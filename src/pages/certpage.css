@@ -1,4 +1,11 @@
+/* Hidden By default */
+#cert_error{
+  display: none;
+}
 
+#cert_success{
+  display: none;
+}
 
 /*************** HEADER ******************/
 

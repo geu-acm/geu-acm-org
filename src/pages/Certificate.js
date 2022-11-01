@@ -1,6 +1,7 @@
 import React from "react";
 
 import verify from "./verify";
+import download from "./download";
 import "./certpage.css"
 
 export default function Certificate() {
@@ -20,7 +21,7 @@ export default function Certificate() {
 
       <div style={{ paddingLeft: "20px" }}>
         <center>
-          <h3 id="ww0">DOWNLOAD VERIFY CERTIFICATE</h3>
+          <h3>DOWNLOAD VERIFY CERTIFICATE</h3>
         </center>
         <br /><br /><br />
         <center>
@@ -28,6 +29,7 @@ export default function Certificate() {
 
           <form action="" onSubmit={verify} id="certform">
             <i>
+              <input type="hidden" id="cert_yo" />
               <label htmlFor="sid">Student ID: </label>
               <br />
               <input type="text" id="cert_sid" name="stuid" style={{ width: "200px" }} />
@@ -44,10 +46,15 @@ export default function Certificate() {
           <br /><br /><br />
           <hr size="20px" width="200px" />
           <br />
-          <p>
-            Certificate Not Found !
+          <p id="cert_error">
+            ⚠️ Certificate Not Found
           </p>
-
+          <p id="cert_success">
+            Verified 🆗 <br /><br />
+            This certificate belongs to <b id="cert_resName">Binod</b>
+            <br /><br />
+            <button onClick={download}>Download Now</button>
+          </p>
         </center>
       </div>
     </div >
