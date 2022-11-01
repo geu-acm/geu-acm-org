@@ -1,0 +1,22 @@
+
+
+/*************** HEADER ******************/
+
+.header{
+    background-color: aliceblue;
+    max-height: 20vh;
+    text-align: center;
+    display: flex;
+}
+
+.header__backbtn{
+    background-color: antiquewhite;
+    display: inline;
+    align-self: flex-start;
+}
+
+.header__title {
+    padding: 10vw;
+    font-style: orange;
+    display: inline;
+}

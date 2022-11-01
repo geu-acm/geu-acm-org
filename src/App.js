@@ -6,13 +6,21 @@ import Certificate from "./pages/Certificate";
 import About from "./sections/About";
 import Events from "./sections/Events";
 
+function getRoute(){
+  const host = window.location.host;
+  const reqp = `${window.location.toString().split(host)[1]}`;
+
+  if(reqp == "/#/certi") return ['certify', <Certificate />]
+  else return ['/', <Landing />]
+}
+
 export default function App() {
+
+  // alert(document.referer)
+
+  var [pathVar,compVar] = getRoute()
+  
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="certi" element={<Certificate />} />
-      </Routes>
-    </BrowserRouter>
+    compVar
   )
 }
