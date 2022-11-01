@@ -2,21 +2,34 @@
 
 /*************** HEADER ******************/
 
-.header{
-    background-color: aliceblue;
-    max-height: 20vh;
+.header {
+    overflow: hidden;
+    background-color: #f1f1f1;
+    /* padding: 10px 5px; */
+  }
+  
+  .header a {
+    float: left;
+    color: black;
     text-align: center;
-    display: flex;
-}
-
-.header__backbtn{
-    background-color: antiquewhite;
-    display: inline;
-    align-self: flex-start;
-}
-
-.header__title {
-    padding: 10vw;
-    font-style: orange;
-    display: inline;
-}
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px; 
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  
+  .header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+  .header a.active {
+    background-color: dodgerblue;
+    color: white;
+  }
+  
+  .header__right {
+    padding-left: 10px;
+    text-align: center;
+  }
