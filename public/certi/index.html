@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <!-- <meta http-equiv="refresh" content="0;url=/"> -->
+    <meta http-equiv="refresh" content="0;url='/#/certi' ">
 </head>
 
 <body>
@@ -9,17 +9,12 @@
     <!-- <form action="/" method="GET" name="redirected" id="form""></form> -->
 
     <script>
-        // Simulate 301 through a FORM -
-        /* setTimeout(function () {
-            const form = document.getElementById('form');
-            const formData = new FormData(form);
-            formData.append('by', 'certu');
-            // alert(formData.get('username'))
-            form.submit();
-        }, 100);    */
+       
 
-        window.location.href = "http://localhost:3000/#/certi";
-
+        // var referto = "http://"+window.location.host+"/#/certi"
+        var referto = "http://localhost/#/certi"
+        // window.location.href = referto
+        console.log(referto)
     </script>
 
 </body>
