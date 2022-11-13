@@ -1,6 +1,6 @@
 import React from "react";
 
-import verify from "./verify";
+import withDownload from "./withDownload";
 import download from "./download";
 import "./certpage.css"
 
@@ -27,7 +27,7 @@ export default function Certificate() {
         <center>
           {/* <hr size="20px" width="200px" /> */}
 
-          <form action="" onSubmit={verify} id="certform">
+          <form action="" onSubmit={withDownload} id="certform">
             <i>
               <input type="hidden" id="cert_yo" />
               <label htmlFor="sid">Student ID: </label>
@@ -43,7 +43,7 @@ export default function Certificate() {
             <br /><br /><br />
             <input type="submit" style={{ height: "30px", width: "100px" }} />
           </form>
-          <br /><br /><br />
+          <br /><br />
           <hr size="20px" width="200px" />
           <br />
           <p id="cert_error">

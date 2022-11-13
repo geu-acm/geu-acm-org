@@ -16,6 +16,7 @@ import Team from './sections/Team';
 import StyledTabs from './components/Styledbutton';
 import Events from './sections/Events';
 import Contact from './sections/Contact';
+import GotoSection from './helpers/GotoSection';
 
 export default function Landing() {
   const theme = useMantineTheme();
@@ -33,7 +34,7 @@ export default function Landing() {
       navbar={
         <MediaQuery largerThan="md" styles={{ display: 'none' }} >
           <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }}>
-            <StyledTabs position='right'>
+            <StyledTabs position='right' onClick={() => setOpened((o) => !o)} onTabChange={GotoSection}>
               <Tabs.Tab label="Home" style={{ minWidth: '100px' }} />
               <Tabs.Tab label="About" style={{ minWidth: '100px' }} />
               <Tabs.Tab label="Events" style={{ minWidth: '100px' }} />
