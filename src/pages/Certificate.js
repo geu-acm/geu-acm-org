@@ -1,10 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 
-import withDownload from "./withDownload";
+import { Alert, Button } from "@mantine/core";
+import { useClipboard } from '@mantine/hooks';
+
+import e1 from "./events/GSWA-Oct22.json"
+
 import download from "./download";
 import "./certpage.css"
+import { getName } from "./eventDetails";
+import { encode } from "../helpers/encDec";
+
+
+function update(e) {
+  e.preventDefault()
+  const sid = document.querySelector("#cert_sid").value;
+  const yo = document.querySelector("#cert_yo");
+  // const event = document.querySelector("#cert_event").value;
+
+  const errorText = document.querySelector('#cert_error').style
+  const successText = document.querySelector('#cert_success').style
+
+  const resName = document.querySelector('#cert_resName')
+
+  if (sid in e1.sid) {
+    errorText.display = "none"
+    successText.display = "block"
+    resName.innerHTML = e1.sid[sid]
+    yo.value = e1.yo ? e1.yo : 500
+  }
+  else {       // if NOT FOUND
+    errorText.display = "block"
+    successText.display = "none"
+  }
+}
+
+const processDownload = () => {    // update data in dom
+  const resName = document.querySelector('#cert_resName')
+  const yo = document.querySelector("#cert_yo");
+
+  download(resName.innerHTML, yo.value)
+
+}
+
+// const copyLink = (e,clipboard) => {
+//   e.preventDefault()
+
+// }
+
 
 export default function Certificate() {
+
+  const clipboard = useClipboard({ timeout: 500 });
+
+  const [state, setState] = useState(['', ''])    // state = [name, yo]
+
   return (
     <div>
       <div className="header">
@@ -15,7 +64,7 @@ export default function Certificate() {
 
         </div>
         <div className="header__right">
-          <h2>Events</h2>
+          <h2 style={{ position: "relative", left: "-40px" }}>Events</h2>
         </div>
       </div>
 
@@ -27,7 +76,7 @@ export default function Certificate() {
         <center>
           {/* <hr size="20px" width="200px" /> */}
 
-          <form action="" onSubmit={withDownload} id="certform">
+          <form action="" onSubmit={update} id="certform">
             <i>
               <input type="hidden" id="cert_yo" />
               <label htmlFor="sid">Student ID: </label>
@@ -53,7 +102,26 @@ export default function Certificate() {
             Verified 🆗 <br /><br />
             This certificate belongs to <b id="cert_resName">Binod</b>
             <br /><br />
-            <button onClick={download}>Download Now</button>
+            <Button color={"blue"} onClick={processDownload}> DOWNLOAD
+            </Button>
+            <br /><br /><br />
+
+            <Alert icon="🚀" color="red" style={{ width: "250px" }}>
+              You can verify this certificate <br />
+
+              <a href="#"
+                color={clipboard.copied ? 'blue' : 'blue'}
+                onClick={() => {
+                  const sid = document.querySelector("#cert_sid").value;
+                  const evCode = 'GSWA-Oct22'
+                  let vurl = window.location.host
+                  vurl = vurl + '/' + encode(sid, evCode)
+                  clipboard.copy(vurl)
+                }} >
+                {clipboard.copied ? 'Copied verifiable link' : 'Copy verifiable link'}
+              </a>
+            </Alert>
+
           </p>
         </center>
       </div>

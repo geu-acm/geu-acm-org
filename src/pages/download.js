@@ -11,9 +11,8 @@ async function getDim(pic) {
     }
 }
 
-function download() {
-    const name = document.querySelector('#cert_resName').innerHTML;
-    const yo = document.querySelector("#cert_yo").value;
+function download(name,yo) {
+    
     // const event = document.querySelector("#cert_event").value;
 
     var img = new Image()

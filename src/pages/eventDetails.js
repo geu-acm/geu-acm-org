@@ -1,13 +1,23 @@
 import events from "./eventsList"
 
-function getEvents() {
-    return events.keys()
+export function getEvents() {
+    var evs = []
+    Object.values(events).forEach((ev) => {
+        evs.push(ev.name)
+    })
+    return evs
+}
+
+export function getEventName(eventCode){
+    return events[eventCode]?.name
+}
+
+export function getEventDate(eventCode){
+    return events[eventCode]?.time
 }
 
 export function getName(id, eventCode) {
-    // if(eventCode in events) console.log("XXXX");
-    // return eventCode
-    return events?.eventCode?.sid?.id
+    return events[eventCode]?.sid[id]
 }
 
 // exports = { getEvents, getName }
