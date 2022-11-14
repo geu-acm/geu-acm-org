@@ -42,11 +42,6 @@ const processDownload = () => {    // update data in dom
 
 }
 
-// const copyLink = (e,clipboard) => {
-//   e.preventDefault()
-
-// }
-
 
 export default function Certificate() {
 
@@ -98,7 +93,7 @@ export default function Certificate() {
           <p id="cert_error">
             ⚠️ Certificate Not Found
           </p>
-          <p id="cert_success">
+          <div id="cert_success">
             Verified 🆗 <br /><br />
             This certificate belongs to <b id="cert_resName">Binod</b>
             <br /><br />
@@ -109,20 +104,20 @@ export default function Certificate() {
             <Alert icon="🚀" color="red" style={{ width: "250px" }}>
               You can verify this certificate <br />
 
-              <a href="#"
+              <a href="#/certi"
                 color={clipboard.copied ? 'blue' : 'blue'}
                 onClick={() => {
                   const sid = document.querySelector("#cert_sid").value;
                   const evCode = 'GSWA-Oct22'
                   let vurl = window.location.host
-                  vurl = vurl + '/' + encode(sid, evCode)
+                  vurl = vurl + '/#/certi/' + encode(sid, evCode)
                   clipboard.copy(vurl)
                 }} >
                 {clipboard.copied ? 'Copied verifiable link' : 'Copy verifiable link'}
               </a>
             </Alert>
 
-          </p>
+          </div>
         </center>
       </div>
     </div >

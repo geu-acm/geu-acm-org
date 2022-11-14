@@ -22,7 +22,7 @@ function getData(loc) {
   evname = getEventName(ecode)
   evdate = getEventDate(ecode)
   name=getName(id,ecode)
-  console.log(evdate)
+  console.log(evname)
 }
 
 function updateData() {
@@ -104,7 +104,7 @@ export default function Verify(props) {
               This certificate was issues to
             </Text>
             <Text variant="gradient" gradient={{ from: 'blue', to: 'blue' }} c="blue" ta="center" style={{ fontSize: "20px" }}>
-              <b id="verify__cert_name">Binod</b>
+              <b id="verify__cert_name">Xavier</b>
             </Text>
             <br />
             <Text style={{ fontSize: "18px" }}>
