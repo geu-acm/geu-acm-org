@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { Alert, Button } from "@mantine/core";
 import { useClipboard } from '@mantine/hooks';
 
-import e1 from "./events/GSWA-Oct22.json"
+import e1 from "./events/GSWA_Oct22.json"
 
 import download from "./download";
 import "./certpage.css"
-import { getName } from "./eventDetails";
+import { getName } from "./events/eventDetails";
 import { encode } from "../helpers/encDec";
 
 
@@ -81,7 +81,7 @@ export default function Certificate() {
               <label htmlFor="cert_event">Select Event:</label>
               <br />
               <select id="cert_event" name="eventlist" form="certform">
-                <option value="GSWA-Oct22">Getting Started with AWS [Oct '22]</option>
+                <option value="GSWA_Oct22">Getting Started with AWS [Oct '22]</option>
               </select>
             </i>
             <br /><br /><br />
@@ -108,7 +108,7 @@ export default function Certificate() {
                 color={clipboard.copied ? 'blue' : 'blue'}
                 onClick={() => {
                   const sid = document.querySelector("#cert_sid").value;
-                  const evCode = 'GSWA-Oct22'
+                  const evCode = 'GSWA_Oct22'
                   let vurl = window.location.host
                   vurl = vurl + '/#/certi/' + encode(sid, evCode)
                   clipboard.copy(vurl)

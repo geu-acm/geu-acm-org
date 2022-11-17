@@ -6,37 +6,47 @@ import { useClipboard } from '@mantine/hooks';
 
 import verifiedAnim from "../assets/anim/lf30_editor_1g3ijmok"
 import download from "./download";
-import { getName, getEvents, getEventName, getDate, getEventDate } from "./eventDetails"
+import { getName, getEvents, getEventName, getDate, getEventDate } from "./events/eventDetails"
 import { encode, decode } from "../helpers/encDec";
 import "./certpage.css"
 
-var name,id,ecode,evname,evdate
+var name, id, ecode, evname, evdate
 
-function getData(loc) {
+var verifyNode
+
+function getData(loc) {     // update in global variables
   const cdata = loc?.split("certi/")[1]
 
   let tmp = decode(cdata)  // Test: MjEwMjE5MTMgR1NXQV9PY3QyMg2
   id = tmp[0]
   ecode = tmp[1]
-  
+
   evname = getEventName(ecode)
   evdate = getEventDate(ecode)
-  name=getName(id,ecode)
-  console.log(evname)
+  name = getName(id, ecode)
+  // console.log(evname, evdate)
 }
 
-function updateData() {
-  const certEvname = document.querySelector("#verify__cert_evname")
-  const certName = document.querySelector("#verify__cert_name")
-  const certDate = document.querySelector("#verify__cert_date")
+function updateData() {     // update in dom
+  const certEvname = verifyNode.querySelector("#verify__cert_evname")
+  const certName = verifyNode.querySelector("#verify__cert_name")
+  const certDate = verifyNode.querySelector("#verify__cert_date")
 
-  if(certName) certName.innerHTML = name
-  if(certEvname) certEvname.innerHTML = evname
-  if(certDate) certDate.innerHTML = evdate
+  if (certName) certName.innerHTML = name
+  if (certEvname) certEvname.innerHTML = evname
+  if (certDate) certDate.innerHTML = evdate
+}
+
+function showFound(){
+
+}
+
+function showNotFound() {
+
 }
 
 function validated() {
-  return name!='' && name!=undefined
+  return name != '' && name != undefined
 }
 
 export default function Verify(props) {
@@ -47,7 +57,9 @@ export default function Verify(props) {
 
   React.useEffect(() => {
 
-    if(validated()) updateData()
+    verifyNode = document.querySelector("#verify")
+
+    validated() ? updateData() : showNotFound()
 
     const instance = lottie.loadAnimation({
       container: document.querySelector("#verified-anim"),
@@ -60,11 +72,11 @@ export default function Verify(props) {
   }, []);
 
   return (
-    <div style={{
+    <div id="verify" style={{
       backgroundImage: "linear-gradient(to top, #F4F7FA 0%, white 100%)",
       height: "100vh"
     }}>
-      <div className="header" style={{background: "white"}}>
+      <div className="header" style={{ background: "white" }}>
         <a href='/'>
           <img src="https://geu.acm.org/images/ACM%20GEU%20logo%20gas.png" width="80vw" />
         </a>

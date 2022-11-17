@@ -1,5 +1,5 @@
 import { jsPDF } from "jspdf";
-import p1 from "./events/certs/GSWA-Oct22.jpg"
+import p1 from "./events/certs/GSWA_Oct22.jpg"
 
 async function getDim(pic) {
     var img = new Image()
