@@ -5,7 +5,7 @@ import './participants/GSWA_Oct22.csv'
 
 // eventCode : name, date, yo 
 
-export function getEvents() {
+export function getiEvents() {
     var evs = []
     Object.values(events).forEach((ev) => {
         evs.push(ev.name)
@@ -22,9 +22,9 @@ export function getEventDate(eventCode) {
 }
 
 export function getName(id, eventCode) {
-    // return events[eventCode]?.sid[id]
+    return events[eventCode]?.sid[id]
     let file = eventCode + '.csv'
-    axios.get("http://"+window.location.host+'/'+'./participants/GSWA_Oct22.csv')
+    axios.get(__dirname+'/robots.txt')
         .then(function (response) {
             console.log(response);
         })

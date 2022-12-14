@@ -22,6 +22,7 @@ export function decode(data) {
 
     try {
         const bun = atob(rdata)
+        console.log(bun.split(' '))
         return bun.split(' ')
     }
     catch {

@@ -9,25 +9,42 @@ import download from "./download";
 import { getName, getEvents, getEventName, getDate, getEventDate } from "./events/eventDetails"
 import { encode, decode } from "../helpers/encDec";
 import "./certpage.css"
+import { getCert } from "../helpers/getEventDetails";
 
-var name, id, ecode, evname, evdate
+var name, id, ecode, evname, evdate, yo
 
-var verifyNode
+var verifyNode, perror = 0
 
-function getData(loc) {     // update in global variables
+async function getData(loc) {     // update in global variables
+
   const cdata = loc?.split("certi/")[1]
 
   let tmp = decode(cdata)  // Test: MjEwMjE5MTMgR1NXQV9PY3QyMg2
   id = tmp[0]
   ecode = tmp[1]
 
-  evname = getEventName(ecode)
-  evdate = getEventDate(ecode)
-  name = getName(id, ecode)
+  var cert = await getCert(ecode, id);
+
+  try {
+    name = cert.name;
+    // ecode = cert.ecode;
+    yo = cert.cyo;
+    evname = cert.event;
+    evdate = cert.date;
+  }
+  catch{
+    perror = 1;
+  }
+
   // console.log(evname, evdate)
 }
 
-function updateData() {     // update in dom
+async function updateData() {     // update in dom
+
+  // verifyNode.style.display = 'block';
+  let successNode = verifyNode.querySelector("#cert_success")
+  successNode.style.display = 'block'
+
   const certEvname = verifyNode.querySelector("#verify__cert_evname")
   const certName = verifyNode.querySelector("#verify__cert_name")
   const certDate = verifyNode.querySelector("#verify__cert_date")
@@ -37,29 +54,47 @@ function updateData() {     // update in dom
   if (certDate) certDate.innerHTML = evdate
 }
 
-function showFound(){
+function showFound() {
 
 }
 
 function showNotFound() {
+  let errorNode = verifyNode.querySelector("#cert_error")
+  errorNode.style.display = 'block'
+
+}
+
+const processDownload = async () => {    // update data in dom
+  const resName = document.querySelector('#cert_resName')
+  const certyo = document.querySelector("#cert_yo");
+
+  await download(name, yo, ecode)
+
+  // download(resName.innerHTML, yo.value)
 
 }
 
 function validated() {
-  return name != '' && name != undefined
+  return !perror;
+  // console.log(name)
+  // return name != '' && name != undefined
 }
 
 export default function Verify(props) {
-
-  getData(props.loc)
 
   const clipboard = useClipboard({ timeout: 500 });
 
   React.useEffect(() => {
 
     verifyNode = document.querySelector("#verify")
+    let successNode = verifyNode.querySelector("#cert_success")
+    let errorNode = verifyNode.querySelector("#cert_error")
+    // successNode.style.display = 'none'
+    // errorNode.style.display = 'none'
 
-    validated() ? updateData() : showNotFound()
+    getData(props.loc).then(() => {
+      validated() ? updateData() : showNotFound();
+    })
 
     const instance = lottie.loadAnimation({
       container: document.querySelector("#verified-anim"),
@@ -98,10 +133,10 @@ export default function Verify(props) {
         <center>
 
           <div id="cert_error">
-            ⚠️ <Text>Certificate Not Found</Text>
+             <Text size="lg"> ⚠️ Certificate Not Found</Text>
           </div>
 
-          <div id="cert_successs">
+          <div id="cert_success">
             {/* <hr size="20px" width="200px" /> */}
             <Text variant="gradient" gradient={{ from: 'blue', to: 'pink' }} c="blue" ta="center" style={{ fontSize: "18px" }}>
               <b id="verify__cert_evname">GETTING READY</b>
